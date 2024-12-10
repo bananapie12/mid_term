@@ -108,19 +108,23 @@ nav a:hover {
     border-radius: 12px;
     text-align: center;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    opacity: 0;
-    transform: translateX(-100%);
-    transition: opacity 0.8s ease, transform 0.8s ease;
+    transform: scale(1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.product.visible {
-    opacity: 1;
-    transform: translateX(0);
+.product:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
 }
 
 .product img {
     max-width: 100%;
     border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.product img:hover {
+    transform: scale(1.1);
 }
 
 .product h3 {
@@ -137,6 +141,23 @@ nav a:hover {
 /* About Us Section */
 #about p {
     text-align: justify;
+}
+
+/* Buttons */
+button {
+    background: linear-gradient(45deg, #ff7f50, #ff6347);
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+button:hover {
+    background: linear-gradient(45deg, #ff6347, #ff7f50);
+    transform: scale(1.1);
 }
 
 /* Footer Section */
@@ -222,18 +243,39 @@ footer {
                 <img src="classicChai.jpg" alt="Classic Chai">
                 <h3>Classic Chai - Spiced Perfection</h3>
                 <p>A warm and cozy cup of spiced chai, perfect for any time of day.</p>
+                <button>Order Now</button>
             </article>
             <article class="product">
                 <img src="Greentea.jpg" alt="Green Tea">
                 <h3>Green Tea - Refreshing & Healthy</h3>
                 <p>A refreshing, healthy choice with a light, aromatic flavor.</p>
+                <button>Order Now</button>
             </article>
             <article class="product">
                 <img src="masalachai.jpg" alt="Masala Chai">
                 <h3>Masala Chai - Traditional Indian Flavor</h3>
                 <p>A bold, spiced tea with a mix of traditional Indian flavors.</p>
+                <button>Order Now</button>
             </article>
         </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about" class="container">
+        <h2>About Us</h2>
+        <p>At Chaibucks, we blend tradition and quality to bring you the finest chai blends. Our mission is to provide an exceptional experience with every sip, honoring the rich heritage of tea-making.</p>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="container">
+        <h2>Contact Us</h2>
+        <p>Email: <a href="mailto:info@chaibucks.com">info@chaibucks.com</a></p>
+        <p>Phone: (123) 456-7890</p>
+        <p>Follow us on:
+            <a href="#">Facebook</a> |
+            <a href="#">Instagram</a> |
+            <a href="#">Twitter</a>
+        </p>
     </section>
 </main>
 
@@ -241,23 +283,6 @@ footer {
 <footer>
     <p>&copy; 2024 Chaibucks. All Rights Reserved.</p>
 </footer>
-
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-    const products = document.querySelectorAll(".product");
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-            if (entry.intersecting) {
-                entry.target.classList.add("visible");
-            }
-        });
-    });
-
-    products.forEach((product) => {
-        observer.observe(product);
-    });
-});
-</script>
 
 </body>
 </html>
